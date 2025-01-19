@@ -7,6 +7,7 @@ from .serializers import (
 )  # Import the MenuItemSerializer
 from django.http import HttpResponse
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 
 def index(request):
@@ -26,5 +27,6 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
 
 
 class BookingViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Booking.objects.all()  # Fetch all objects from the Booking model
     serializer_class = BookingSerializer
