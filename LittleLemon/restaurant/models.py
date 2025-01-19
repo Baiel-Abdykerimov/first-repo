@@ -18,4 +18,4 @@ class Menu(models.Model):
     menu_item_description = models.TextField(max_length=1000, default="")
 
     def __str__(self):
-        return str(self.name)
+        return str(f"{self.name} : {str(self.price)}")
